@@ -5,7 +5,7 @@
 #include <gdk/gdkdisplay.h>
 #include "dock_config.h"
 
-#define DOCK_HEIGHT 40
+#define DOCK_HEIGHT 30
 
 void set_dimension(GtkWidget *window){
     GdkDisplay *display = gdk_display_get_default();
