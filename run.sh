@@ -1,2 +1,2 @@
-gcc main.c dock_config.c `pkg-config --cflags --libs gtk4 ` -o app
+gcc main.c dock_config.c `pkg-config --cflags --libs gtk+-3.0 ` -o app
 ./app
