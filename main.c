@@ -5,6 +5,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *window = gtk_application_window_new(app);
     set_dimension(window);
     gtk_window_set_decorated(GTK_WINDOW(window), FALSE);
+    gtk_window_set_gravity(GTK_WINDOW(window), GDK_GRAVITY_SOUTH);
     gtk_window_present(GTK_WINDOW(window));
 }
 

@@ -5,6 +5,8 @@
 #include <gdk/gdkdisplay.h>
 #include "dock_config.h"
 
+#define DOCK_HEIGHT 40
+
 void set_dimension(GtkWidget *window){
     GdkDisplay *display = gdk_display_get_default();
     GdkMonitor *monitor = gdk_display_get_primary_monitor(display);
@@ -12,5 +14,6 @@ void set_dimension(GtkWidget *window){
     GdkRectangle geo;
     gdk_monitor_get_geometry(monitor, &geo);
 
-    gtk_window_set_default_size(GTK_WINDOW(window), geo.width, 30);
+    gtk_window_set_default_size(GTK_WINDOW(window), geo.width, DOCK_HEIGHT);
+    gtk_window_move(GTK_WINDOW(window), 0, geo.height - DOCK_HEIGHT);
 }
