@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include "dock_config.h"
+#include "x11_utils.h"
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *window = gtk_application_window_new(app);
@@ -14,6 +15,8 @@ static void activate(GtkApplication *app, gpointer user_data) {
 }
 
 int main(int argc, char **argv) {
+    get_active_windows();
+    
     GtkApplication *app;
     int status;
 
