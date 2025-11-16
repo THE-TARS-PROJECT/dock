@@ -4,6 +4,6 @@
 #include <gtk/gtk.h>
 
 void set_dimension(GtkWidget *window);
-void set_window_gravity_south(GtkWidget *window);
+void set_window_style(GtkCssProvider *provider, GtkWindow *window);
 
 #endif

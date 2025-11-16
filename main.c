@@ -6,6 +6,10 @@ static void activate(GtkApplication *app, gpointer user_data) {
     set_dimension(window);
     gtk_window_set_decorated(GTK_WINDOW(window), FALSE);
     gtk_window_set_gravity(GTK_WINDOW(window), GDK_GRAVITY_SOUTH);
+
+    GtkCssProvider *provider = gtk_css_provider_new();
+    set_window_style(provider, window);
+
     gtk_window_present(GTK_WINDOW(window));
 }
 
