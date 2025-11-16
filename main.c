@@ -1,4 +1,5 @@
 #include <gtk/gtk.h>
+#include <stdbool.h>
 #include "dock_config.h"
 // #include "x11_utils.h"
 
@@ -14,9 +15,23 @@ static void activate(GtkApplication *app, gpointer user_data) {
     set_window_style(provider, window);
 
     GtkWidget *btn = gtk_button_new_with_label("TARS");
+    gtk_widget_set_hexpand(btn, FALSE);
 
-    GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, layout_spacing);
-    gtk_box_pack_start(GTK_BOX(box), btn, FALSE, FALSE, 4);
+    GtkWidget *search_box = gtk_entry_new();
+    gtk_widget_set_hexpand(GTK_WIDGET(search_box), TRUE);
+    gtk_entry_set_placeholder_text(GTK_ENTRY(search_box), "Search....");
+
+    // box holding date above and text below
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 2);
+    GtkWidget *date_label = gtk_label_new_with_mnemonic("16 Nov 2025");
+    GtkWidget *time_label = gtk_label_new_with_mnemonic("18:37");
+    gtk_box_pack_start(GTK_BOX(vbox), date_label, FALSE, FALSE, 2);
+    gtk_box_pack_start(GTK_BOX(vbox), time_label, FALSE, FALSE, 2);
+
+    GtkWidget *box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, layout_spacing);
+    gtk_box_pack_start(GTK_BOX(box), btn, FALSE, FALSE, 6);
+    gtk_box_pack_start(GTK_BOX(box), search_box, TRUE, FALSE, 6);
+    gtk_box_pack_start(GTK_BOX(box), vbox, TRUE, FALSE, 6);
 
     gtk_container_add(GTK_CONTAINER(window), box);
 
